@@ -7,6 +7,7 @@ require 'rspec/expectations/deprecation'
 require 'rspec/expectations/handler'
 require 'rspec/expectations/version'
 require 'rspec/expectations/differ'
+require 'rspec/expectations/configuration'
 
 module RSpec
   # RSpec::Expectations adds two instance methods to every object:

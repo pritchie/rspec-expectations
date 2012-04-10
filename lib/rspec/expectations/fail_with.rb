@@ -26,7 +26,8 @@ module RSpec
               message << "\nDiff:" << differ.diff_as_string(actual, expected)
             end
           elsif no_procs?(actual, expected) && no_numbers?(actual, expected)
-            message << "\nDiff:" << differ.diff_as_object(actual, expected)
+            encoding = actual.encoding
+            message << "\nDiff:".force_encoding(encoding) << differ.diff_as_object(actual, expected).force_encoding(encoding)
           end
         end
 

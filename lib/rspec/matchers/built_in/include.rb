@@ -34,6 +34,9 @@ module RSpec
             elsif comparing_hash_keys?(actuals, expected)
               actuals.has_key?(expected)
             else
+              if actuals.respond_to?(:encoding) && actuals.encoding != expected.encoding
+                actuals.force_encoding expected.encoding
+              end
               actuals.include?(expected)
             end
           end

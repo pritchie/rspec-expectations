@@ -25,6 +25,9 @@ module RSpec
           if matcher = OperatorMatcher.get(@actual.class, operator)
             @actual.send(::RSpec::Matchers.last_should, matcher.new(expected))
           else
+            if @actual.respond_to?(:encoding) && @actual.encoding != expected.encoding
+              @actual.force_encoding expected.encoding
+            end
             eval_match(@actual, operator, expected)
           end
         end
